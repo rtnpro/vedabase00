@@ -53,6 +53,7 @@
             select(objectToToggleSelection);
           } else {
             deselect(objectToToggleSelection);
+            selectedParagraph = null;
           }
         }
 
@@ -144,6 +145,22 @@
             }
           )
         ;
+
+        // hides popup when clicking outside
+        $(document).bind( "mouseup touchend", function(e) {
+            if (selectedParagraph != null) {
+                var container = $("#popup");
+
+                if (!container.is(e.target) // if the target of the click isn't the container...
+                    && container.has(e.target).length === 0) // ... nor a descendant of the container
+                {
+                    deselect(selectedParagraph);
+                    selectedParagraph = null;
+                    hide(popUp);
+                }
+            }
+        });
+
       }
     );
   }
