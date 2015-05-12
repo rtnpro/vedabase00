@@ -6,10 +6,20 @@
       function ( )
       {
           // Setup page.
-        jQuery('.popup').addClass('hidden');
-        //jQuery('.share').removeClass('hidden');
+        jQuery('body').append("<div id='popup' class='hidden'><p>Placeholder.</p></div>");
+        popUp = jQuery('#popup');
 
           // Define functions.
+        var hide = function (objectToHide)
+        {
+          objectToHide.addClass('hidden');
+        }
+
+        var show = function (objectToShow)
+        {
+          objectToShow.removeClass('hidden');
+        }
+
         var lastHightlightedObject;
         var hightlight = function (objectToHightlight)
         {
@@ -21,28 +31,23 @@
             lastHightlightedObject = objectToHightlight;
         };
 
-        var lastPopUp;
-        var popUp = function (objectToPopUp)
-        {
-            if (lastPopUp != null)
-            {
-              lastPopUp.addClass('hidden');
-            }
-            objectToPopUp.removeClass('hidden');
-            lastPopUp = objectToPopUp;
-        };
-
           // Define event handlers.
         jQuery('a.share').on
         (
             'click'
           , function ( ) 
           {
-            popUp(jQuery(jQuery(this).attr('href')));
-            hightlight(jQuery('#' + jQuery(this).attr('href').split('-')[1]));
-            jQuery(this).addClass('hidden');
+            hide(jQuery(this));
 
-            lastPopUp.contents( ).replaceWith("<p>Dynamic content of the pop-up here.</p>");
+            var paragraphId = jQuery(this).attr('href');
+            var paragraph = jQuery(paragraphId);
+
+            hightlight(paragraph);
+
+            show(popUp);
+
+            popUp.contents( ).replaceWith("<p>Content of the pop-up for the paragraph with id of " + paragraphId + ".</p>");
+            paragraph.after(popUp);
 
             return false;
           }
