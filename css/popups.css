@@ -1,0 +1,18 @@
+a.share
+{
+}
+
+.popup
+{
+	border:0.1em dotted black;
+}
+
+.hidden
+{
+	display:none;
+}
+
+.highlighted
+{
+	outline:0.1em solid red;
+}
