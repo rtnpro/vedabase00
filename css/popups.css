@@ -20,6 +20,7 @@
 	border:1px dotted orange;
 	background-color: white;
 	width: 10em;
+	z-index: 3;
 }
 
 .hidden
