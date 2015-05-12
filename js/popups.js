@@ -127,7 +127,7 @@
             {
               if (!jQuery(this).hasClass('highlighted'))
               {
-                jQuery(this).prepend(shareAnchorContainer);
+                jQuery(this).find(".ri").append(shareAnchorContainer);
                 shareAnchor.attr('href', '#' + jQuery(this).attr('id'));
                 show(shareAnchorContainer);
               }
