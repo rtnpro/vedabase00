@@ -6,7 +6,7 @@
       function ( )
       {
           // Setup page.
-        jQuery('body').append("<p id='popup' class='hidden'><p>Placeholder.</p></p>");
+        jQuery('body').append("<div id='popup' class='popup hidden'><p>Placeholder.</p></div>");
         popUp = jQuery('#popup');
 
         jQuery('body').append("<span class='share' ><a id='share' href='#'>Share.</a></span>");
@@ -16,6 +16,11 @@
         doneAnchor = jQuery("<a id='done' href='#done'>Done.</a>");
 
           // Define functions.
+        var isDesktopScreenWidth = function ( )
+        {
+          return jQuery(window).width( ) > 800;
+        }
+
         var hide = function (objectToHide)
         {
           objectToHide.addClass('hidden');
@@ -51,6 +56,18 @@
           }
         }
 
+        var alignPopUpTo = function (objectToAlign)
+        {
+              var CSSRule = 
+              {
+                  'position': 'absolute'
+                , 'left': objectToAlign.offset( ).left - 200 + 'px'
+                , 'top': objectToAlign.offset( ).top - 100 + 'px'
+                , 'right': objectToAlign.offset( ).right + 100 + 'px'
+              };
+              popUp.css(CSSRule);
+        }
+
           // Define event handlers.
         shareAnchor.on
         (
@@ -83,6 +100,11 @@
             popUp.append(doneAnchor);
             paragraph.after(popUp);
 
+            if (isDesktopScreenWidth( ))
+            {  
+              alignPopUpTo(jQuery(this));
+            } 
+
             return false;
           }
         );
@@ -112,6 +134,16 @@
             }
           , function ( ) {}
         );
+
+        jQuery(window)
+          .resize
+          (
+            function ( )
+            {
+              alignPopUpTo(shareAnchor);
+            }
+          )
+        ;
       }
     );
   }
