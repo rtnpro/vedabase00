@@ -1,5 +1,17 @@
-a.share
+.ri
 {
+	padding-right: 3.5em;
+}
+
+.share
+{
+	position: relative;
+	display: inline;
+	float: right;
+	width: 3em;
+	height: 100%;
+	top: 0;
+	right: 0;
 }
 
 .popup

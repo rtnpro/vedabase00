@@ -6,10 +6,11 @@
       function ( )
       {
           // Setup page.
-        jQuery('body').append("<div id='popup' class='hidden'><p>Placeholder.</p></div>");
+        jQuery('body').append("<p id='popup' class='hidden'><p>Placeholder.</p></p>");
         popUp = jQuery('#popup');
 
-        jQuery('body').append("<a id='share' href='#'>Share.</a>");
+        jQuery('body').append("<span class='share' ><a id='share' href='#'>Share.</a></span>");
+        shareAnchorContainer = jQuery('.share');
         shareAnchor = jQuery('#share');
 
         doneAnchor = jQuery("<a id='done' href='#done'>Done.</a>");
@@ -56,8 +57,6 @@
             'click'
           , function ( ) 
           {
-            hide(jQuery(this));
-
             var paragraphId = jQuery(this).attr('href');
             var paragraph = jQuery(paragraphId);
 
@@ -106,9 +105,9 @@
             {
               if (!jQuery(this).hasClass('highlighted'))
               {
-                jQuery(this).after(shareAnchor);
+                jQuery(this).prepend(shareAnchorContainer);
                 shareAnchor.attr('href', '#' + jQuery(this).attr('id'));
-                show(shareAnchor);
+                show(shareAnchorContainer);
               }
             }
           , function ( ) {}
