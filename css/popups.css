@@ -9,7 +9,8 @@
 	cursor: pointer;
 	top: 0px;
 	height: 100%;
-	padding-left: 28px;
+	padding-left: 18px;
+	font-size: 18px;
 }
 
 .popup

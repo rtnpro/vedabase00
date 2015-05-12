@@ -9,7 +9,7 @@
         jQuery('body').append("<div id='popup' class='popup hidden'><p>Placeholder.</p></div>");
         popUp = jQuery('#popup');
 
-        jQuery('body').append("<span class='share' ><a id='share' href='#'>Share.</a></span>");
+        jQuery('body').append("<span class='share' ><a id='share' href='#'><i class='fa fa-bars'></i></a></span>");
         shareAnchorContainer = jQuery('.share');
         shareAnchor = jQuery('#share');
 
