@@ -8,6 +8,8 @@
           // Setup page.
         jQuery('body').append("<div id='popup' class='hidden'><p>Placeholder.</p></div>");
         popUp = jQuery('#popup');
+        jQuery('body').append("<a id='share' href='#'>Share.</a>");
+        shareAnchor = jQuery('#share');
 
           // Define functions.
         var hide = function (objectToHide)
@@ -32,7 +34,7 @@
         };
 
           // Define event handlers.
-        jQuery('a.share').on
+        shareAnchor.on
         (
             'click'
           , function ( ) 
@@ -53,26 +55,18 @@
           }
         );
 
-        jQuery('div').hover
+        jQuery('div.record').hover
         (
             function ( )
             {
               if (!jQuery(this).hasClass('highlighted'))
               {
-                jQuery(this)
-                  .children('a.share')
-                  .removeClass('hidden');
+                jQuery(this).after(shareAnchor);
+                shareAnchor.attr('href', '#' + jQuery(this).attr('id'));
+                show(shareAnchor);
               }
             }
-          , function ( )
-            {
-              if (!jQuery(this).hasClass('highlighted'))
-              {
-                jQuery(this)
-                  .children('a.share')
-                  .addClass('hidden');
-              }
-            }
+          , function ( ) {}
         );
       }
     );
