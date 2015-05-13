@@ -1,13 +1,11 @@
-#Here is little explanation:
+#Vedabase v2 :: Paragraph Menu
 If you got to this Quartz website 
 (http://qz.com/398124/if-you-are-a-mosquito-magnet-its-likely-your-kids-will-be-too/), 
 and hover above different paragraph there is a plus icon on the right. 
 After clicking paragraph is highlighted and annotation block on right 
 side appears.
 
-We will need similar functionality for new vedabase.com, where every 
-paragraph have unique id and should have attach similar menu, where 
-users can bookmark, share, propose category, etc....
+We need paragraph menu for new version of vedabase.com, where where users can bookmark, share, propose category, etc.... for specific paragraph.
 
 #Our requirements:
 - has to work on desktops
