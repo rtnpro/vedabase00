@@ -6,7 +6,7 @@
       function ( )
       {
           // Setup page.
-        jQuery('body').append("<div id='popup' class='popup hidden'><p>Placeholder.</p></div>");
+        jQuery('body').append("<div id='popup' class='popup'><p>Placeholder.</p></div>");
         popUp = jQuery('#popup');
 
         jQuery('body').append("<span class='share' ><a id='share' href='#'><i class='fa fa-bars'></i></a></span>");
@@ -35,6 +35,7 @@
         var deselect = function (objectToDeselect)
         {
           objectToDeselect.removeClass('highlighted');
+          jQuery('body').removeClass('popup-active');
         };
         var select = function (objectToSelect)
         {
@@ -45,6 +46,8 @@
             }
             objectToSelect.addClass('highlighted');
             selectedParagraph = objectToSelect;
+
+            jQuery('body').addClass('popup-active');
         };
         var toggleSelection = function (objectToToggleSelection, isSelected)
         {
@@ -77,10 +80,18 @@
           {
             var paragraphId = jQuery(this).attr('href');
             var paragraph = jQuery(paragraphId);
-
+            var slide_offset = 300;
             select(paragraph);
 
-            show(popUp);
+            popUp.css({
+                left: jQuery(this).offset().left - slide_offset,
+                top: selectedParagraph.offset().top - 1,
+                'opacity': 1,
+                'z-index':1
+            })
+
+            // hide(shareAnchor);
+            // show(popUp);
 
             /* Move anchor to different location
              * in order to keep it's event handler alive
@@ -99,12 +110,8 @@
             popUp.append("<p>Content of the pop-up for the paragraph with id of " + paragraphId + ".</p>");
             show(doneAnchor);
             popUp.append(doneAnchor);
-            paragraph.after(popUp);
-
-            if (isDesktopScreenWidth( ))
-            {  
-              alignPopUpTo(jQuery(this));
-            } 
+            console.log(jQuery(this).offset())
+            console.log(paragraph.offset().top);
 
             return false;
           }
@@ -116,7 +123,7 @@
           , function ( )
             {
               deselect(selectedParagraph);
-              hide(popUp);
+              popUp.css({opacity:0, 'z-index':-1})
 
               return false;
             }
@@ -126,10 +133,11 @@
         (
             function ( )
             {
-              if (!jQuery(this).hasClass('highlighted'))
+              if (!jQuery('body').hasClass('popup-active') & !jQuery(this).hasClass('highlighted'))
               {
                 jQuery(this).find(".ri").append(shareAnchorContainer);
                 shareAnchor.attr('href', '#' + jQuery(this).attr('id'));
+                show(shareAnchor);
                 show(shareAnchorContainer);
               }
             }
@@ -154,9 +162,9 @@
                 if (!container.is(e.target) // if the target of the click isn't the container...
                     && container.has(e.target).length === 0) // ... nor a descendant of the container
                 {
+                    popUp.css({opacity:0, 'z-index':-1})
                     deselect(selectedParagraph);
                     selectedParagraph = null;
-                    hide(popUp);
                 }
             }
         });

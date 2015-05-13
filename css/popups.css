@@ -1,3 +1,14 @@
+.record-wrapper {
+    right: 0%;
+    -webkit-transition: all 280ms ease 0s;
+    -moz-transition: all 280ms ease 0s;
+    -ms-transition: all 280ms ease 0s;
+    -o-transition: all 280ms ease 0s;
+    transition: all 280ms ease 0s;
+}
+.popup-active .record-wrapper {
+    right: 300px;
+}
 .record > * {
 	position: relative;
 }
@@ -22,8 +33,16 @@
 	position: absolute;
 	border:1px dotted orange;
 	background-color: white;
-	width: 10em;
+	width: 300px;
+        padding:20px;
 	z-index: 3;
+        opacity:0;
+
+    -webkit-transition: all 280ms ease 0s;
+    -moz-transition: all 280ms ease 0s;
+    -ms-transition: all 280ms ease 0s;
+    -o-transition: all 280ms ease 0s;
+    transition: all 280ms ease 0s;
 }
 
 .hidden
