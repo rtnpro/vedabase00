@@ -1,6 +1,9 @@
 .record > * {
 	position: relative;
 }
+.ri {
+    padding: .2em .5em;
+}
 .share
 {
 	position: absolute;
@@ -9,7 +12,8 @@
 	cursor: pointer;
 	top: 0px;
 	height: 100%;
-	padding-left: 18px;
+	padding-top: 5px;
+	padding-left: 8px;
 	font-size: 18px;
 }
 
@@ -29,5 +33,6 @@
 
 .highlighted
 {
-	outline:0.1em solid red;
+	outline:0.1em solid #ffce7c;
+        background: rgba(255,224,171,0.3);
 }
