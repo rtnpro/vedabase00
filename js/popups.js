@@ -80,9 +80,9 @@
           {
             var paragraphId = jQuery(this).attr('href');
             var paragraph = jQuery(paragraphId);
-            var slide_offset = 300;
+            var slide_offset = 0;
             select(paragraph);
-
+            $("body").animate({scrollLeft: 300}, 150);
             popUp.css({
                 left: jQuery(this).offset().left - slide_offset,
                 top: selectedParagraph.offset().top - 1,
