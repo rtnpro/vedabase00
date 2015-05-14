@@ -124,6 +124,8 @@
             {
               deselect(selectedParagraph);
               popUp.css({opacity:0, 'z-index':-1})
+              popUp.css({left:jQuery(shareAnchor).offset().left - 300})
+              jQuery("body").animate({scrollLeft: 0}, 150);
 
               return false;
             }
@@ -163,8 +165,10 @@
                     && container.has(e.target).length === 0) // ... nor a descendant of the container
                 {
                     popUp.css({opacity:0, 'z-index':-1})
+                    popUp.css({left:jQuery(shareAnchor).offset().left - 300})
                     deselect(selectedParagraph);
                     selectedParagraph = null;
+                    jQuery("body").animate({scrollLeft: 0}, 150);
                 }
             }
         });
