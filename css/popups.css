@@ -37,11 +37,11 @@
 	z-index: 3;
         opacity:0;
 
-    -webkit-transition: all 280ms ease 0s;
-    -moz-transition: all 280ms ease 0s;
-    -ms-transition: all 280ms ease 0s;
-    -o-transition: all 280ms ease 0s;
-    transition: all 280ms ease 0s;
+    -webkit-transition: opacity 380ms ease 0s;
+    -moz-transition: opacity 380ms ease 0s;
+    -ms-transition: opacity 380ms ease 0s;
+    -o-transition: opacity 380ms ease 0s;
+    transition: opacity 380ms ease 0s;
 }
 
 .hidden
