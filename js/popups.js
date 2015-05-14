@@ -82,13 +82,13 @@
             var paragraph = jQuery(paragraphId);
             var slide_offset = 0;
             select(paragraph);
-            $("body").animate({scrollLeft: 300}, 150);
+            popUp.animate({ "left": jQuery(this).offset().left }, 0 );
             popUp.css({
-                left: jQuery(this).offset().left - slide_offset,
                 top: selectedParagraph.offset().top - 1,
                 'opacity': 1,
                 'z-index':1
             })
+            jQuery("body").animate({scrollLeft: 300}, 350);
 
             // hide(shareAnchor);
             // show(popUp);
@@ -122,11 +122,11 @@
             'click'
           , function ( )
             {
-              deselect(selectedParagraph);
               popUp.css({opacity:0, 'z-index':-1})
-              popUp.css({left:jQuery(shareAnchor).offset().left - 300})
+              popUp.animate({ "left": "-=300px" }, "0" );
+              deselect(selectedParagraph);
+              selectedParagraph = null;
               jQuery("body").animate({scrollLeft: 0}, 150);
-
               return false;
             }
         );
@@ -165,7 +165,7 @@
                     && container.has(e.target).length === 0) // ... nor a descendant of the container
                 {
                     popUp.css({opacity:0, 'z-index':-1})
-                    popUp.css({left:jQuery(shareAnchor).offset().left - 300})
+                    popUp.animate({ "left": "-=300px" }, "0" );
                     deselect(selectedParagraph);
                     selectedParagraph = null;
                     jQuery("body").animate({scrollLeft: 0}, 150);
