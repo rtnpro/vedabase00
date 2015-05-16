@@ -145,34 +145,6 @@
             }
           , function ( ) {}
         );
-
-        jQuery(window)
-          .resize
-          (
-            function ( )
-            {
-              alignPopUpTo(shareAnchor);
-            }
-          )
-        ;
-
-        // hides popup when clicking outside
-        $(document).bind( "mouseup touchend", function(e) {
-            if (selectedParagraph != null) {
-                var container = $("#popup");
-
-                if (!container.is(e.target) // if the target of the click isn't the container...
-                    && container.has(e.target).length === 0) // ... nor a descendant of the container
-                {
-                    popUp.css({opacity:0, 'z-index':-1})
-                    popUp.animate({ "left": "-=300px" }, "0" );
-                    deselect(selectedParagraph);
-                    selectedParagraph = null;
-                    jQuery("body").animate({scrollLeft: 0}, 150);
-                }
-            }
-        });
-
       }
     );
   }
