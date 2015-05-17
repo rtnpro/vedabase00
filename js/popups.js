@@ -86,8 +86,9 @@
             popUp.css({
                 top: selectedParagraph.offset().top - 1,
                 'opacity': 1,
-                'z-index':1
+                'z-index': 3
             })
+            jQuery("#pm-overlay").css({'display': 'block'});
             jQuery("body").animate({scrollLeft: 300}, 350);
 
             // hide(shareAnchor);
@@ -116,18 +117,32 @@
             return false;
           }
         );
-
+        jQuery("#pm-overlay").on
+        (
+            'click'
+          , function ( )
+            {
+                jQuery("#pm-overlay").css({'display': 'none'});
+                popUp.css({opacity:0, 'z-index':-1});
+                popUp.animate({ "left": "-=300px" }, "0" );
+                deselect(selectedParagraph);
+                selectedParagraph = null;
+                jQuery("body").animate({scrollLeft: 0}, 150);
+                return false;
+            }
+        );
         doneAnchor.on
         (
             'click'
           , function ( )
             {
-              popUp.css({opacity:0, 'z-index':-1})
-              popUp.animate({ "left": "-=300px" }, "0" );
-              deselect(selectedParagraph);
-              selectedParagraph = null;
-              jQuery("body").animate({scrollLeft: 0}, 150);
-              return false;
+                jQuery("#pm-overlay").css({'display': 'none'});
+                popUp.css({opacity:0, 'z-index':-1});
+                popUp.animate({ "left": "-=300px" }, "0" );
+                deselect(selectedParagraph);
+                selectedParagraph = null;
+                jQuery("body").animate({scrollLeft: 0}, 150);
+                return false;
             }
         );
 
