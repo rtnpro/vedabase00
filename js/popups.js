@@ -89,7 +89,7 @@
                 'z-index': 3
             })
             jQuery("#pm-overlay").css({'display': 'block'});
-            jQuery("body").animate({scrollLeft: 300}, 350);
+            jQuery("html,body").animate({scrollLeft: "+=300"}, 350);
 
             // hide(shareAnchor);
             // show(popUp);
