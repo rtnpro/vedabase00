@@ -42,11 +42,13 @@
 
         var popUpShow = function ( )
         { 
-            show(popUp);
-            popUp.animate({ "left": shareAnchor.offset().left }, 0 );
-            popUp.css({
-                top: selectedParagraph.offset().top - 1,
-            })
+            if (selectedParagraph) {
+                show(popUp);
+                popUp.animate({ "left": shareAnchor.offset().left }, 0 );
+                popUp.css({
+                    top: selectedParagraph.offset().top - 1,
+                })
+            }
         }
 
         var overlayShow = function ( )
