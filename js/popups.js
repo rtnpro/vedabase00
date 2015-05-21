@@ -6,24 +6,33 @@
       function ( )
       {
           // Setup page.
-        jQuery('body').append("<div id='popup' class='popup'><p>Placeholder.</p></div>");
-        popUp = jQuery('#popup');
+        var selectedParagraph;
 
-        jQuery('body').append("<span class='share' ><a id='share' href='#'><i class='fa fa-bars'></i></a></span>");
-        shareAnchorContainer = jQuery('.share');
-        shareAnchor = jQuery('#share');
+        jQuery('body').append("<div id='popup' class='popup hidden'><p>Placeholder.</p></div>");
+        var popUp = jQuery('#popup');
+
+        jQuery('body').append("<span class='share hidden' ><a id='share' href='#'><i class='fa fa-bars'></i></a></span>");
+        var shareAnchorContainer = jQuery('.share');
+        var shareAnchor = jQuery('#share');
 
         doneAnchor = jQuery("<a id='done' href='#done'>Done.</a>");
 
           // Define functions.
-        var isDesktopScreenWidth = function ( )
-        {
-          return jQuery(window).width( ) > 800;
-        }
-
         var hide = function (objectToHide)
         {
           objectToHide.addClass('hidden');
+        }
+
+        var popUpHide = function ( )
+        {
+          hide(popUp);
+          popUp.animate({ "left": "-=300px" }, "0" );
+        }
+
+        var overlayHide = function ( )
+        {
+          jQuery("#pm-overlay").css({'display': 'none'});
+          jQuery("body").animate({scrollLeft: 0}, 150);
         }
 
         var show = function (objectToShow)
@@ -31,15 +40,32 @@
           objectToShow.removeClass('hidden');
         }
 
-        var selectedParagraph;
+        var popUpShow = function ( )
+        { 
+            show(popUp);
+            popUp.animate({ "left": shareAnchor.offset().left }, 0 );
+            popUp.css({
+                top: selectedParagraph.offset().top - 1,
+            })
+        }
+
+        var overlayShow = function ( )
+        {
+          jQuery("#pm-overlay").css({'display': 'block'});
+          jQuery("html,body").animate({scrollLeft: "+=300"}, 350);
+        }
+
         var deselect = function (objectToDeselect)
         {
           objectToDeselect.removeClass('highlighted');
           jQuery('body').removeClass('popup-active');
+          selectedParagraph = null;
+          overlayHide( );
+          popUpHide( );
         };
+        
         var select = function (objectToSelect)
         {
-
             if (selectedParagraph != null)
             {
               deselect(selectedParagraph);
@@ -48,29 +74,10 @@
             selectedParagraph = objectToSelect;
 
             jQuery('body').addClass('popup-active');
-        };
-        var toggleSelection = function (objectToToggleSelection, isSelected)
-        {
-          if (isSelected)
-          {
-            select(objectToToggleSelection);
-          } else {
-            deselect(objectToToggleSelection);
-            selectedParagraph = null;
-          }
-        }
 
-        var alignPopUpTo = function (objectToAlign)
-        {
-              var CSSRule = 
-              {
-                  'position': 'absolute'
-                , 'left': objectToAlign.offset( ).left - 200 + 'px'
-                , 'top': objectToAlign.offset( ).top - 100 + 'px'
-                , 'right': objectToAlign.offset( ).right + 100 + 'px'
-              };
-              popUp.css(CSSRule);
-        }
+            overlayShow( );
+            popUpShow( );
+        };
 
           // Define event handlers.
         shareAnchor.on
@@ -80,30 +87,21 @@
           {
             var paragraphId = jQuery(this).attr('href');
             var paragraph = jQuery(paragraphId);
-            var slide_offset = 0;
-            select(paragraph);
-            popUp.animate({ "left": jQuery(this).offset().left }, 0 );
-            popUp.css({
-                top: selectedParagraph.offset().top - 1,
-                'opacity': 1,
-                'z-index': 3
-            })
-            jQuery("#pm-overlay").css({'display': 'block'});
-            jQuery("html,body").animate({scrollLeft: "+=300"}, 350);
 
-            // hide(shareAnchor);
-            // show(popUp);
+            select(paragraph);
 
             /* Move anchor to different location
              * in order to keep it's event handler alive
              * when content of the pop-up will be cleared.
              */
-            $('body').after(doneAnchor);
+            console.assert("Done anchor is missing.", doneAnchor == null);
+            jQuery('body').after(doneAnchor);
             hide(doneAnchor);
 
             /* Remove content of the pop-up,
              * in order to avoid duplications.
              */
+            console.assert("Pop-up is missing.", popUp == null);
             popUp.contents( ).replaceWith("");
 
             /* Generate content of the pop-up.
@@ -111,8 +109,6 @@
             popUp.append("<p>Content of the pop-up for the paragraph with id of " + paragraphId + ".</p>");
             show(doneAnchor);
             popUp.append(doneAnchor);
-            console.log(jQuery(this).offset())
-            console.log(paragraph.offset().top);
 
             return false;
           }
@@ -122,26 +118,17 @@
             'click'
           , function ( )
             {
-                jQuery("#pm-overlay").css({'display': 'none'});
-                popUp.css({opacity:0, 'z-index':-1});
-                popUp.animate({ "left": "-=300px" }, "0" );
                 deselect(selectedParagraph);
-                selectedParagraph = null;
-                jQuery("body").animate({scrollLeft: 0}, 150);
                 return false;
             }
         );
+
         doneAnchor.on
         (
             'click'
           , function ( )
             {
-                jQuery("#pm-overlay").css({'display': 'none'});
-                popUp.css({opacity:0, 'z-index':-1});
-                popUp.animate({ "left": "-=300px" }, "0" );
                 deselect(selectedParagraph);
-                selectedParagraph = null;
-                jQuery("body").animate({scrollLeft: 0}, 150);
                 return false;
             }
         );
@@ -160,6 +147,16 @@
             }
           , function ( ) {}
         );
+
+        jQuery(window)
+          .resize
+          (
+            function ( )
+            {
+              popUpShow( );
+            }
+          )
+        ;
       }
     );
   }
