@@ -12,6 +12,23 @@
     background-color: #ffdfaf;
     border-color: #ffcd84;
   }
+
+  #para-menu-btn {
+    position: fixed;
+    top: 50px;
+    left: 10px;
+    z-index: 100;
+    display: none;
+  }
+
+  .record.selected {
+    text-decoration: underline;
+  }
+
+  #para-menu {
+    margin-top: 100px;
+    margin-bottom: 100px;
+  }
 </style>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
@@ -34,6 +51,11 @@
           },
           "navbar": {
             "title": ""
+          }
+      });
+      $('nav#para-menu').mmenu({
+          "offCanvas": {
+            "zposition": "front"
           }
       });
    });
@@ -126,8 +148,26 @@
 </div>
 </div></div>
 </div>
+<div class="main-content-container">
+<nav id="para-menu">
+  <ul>
+      <div class="row">
+        <button class="btn col-md-6 col-sm-6 col-xs-6">
+          <i class="fa fa-bookmark"></i> Remove from Bookmarks
+        </button>
+        <button class="btn col col-md-6 col-sm-6 col-xs-6">
+          <i class="fa fa-share"></i> Share this
+        </button>
+      </div>
+  </ul>
+</nav>
 <div class="container main-content">
 <script data-rocketsrc="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.4.5/ckeditor.js" type="text/rocketscript" data-rocketoptimized="true"></script>
+
+<div id="para-menu-btn">
+  <a href="#para-menu"><i class="fa fa-bars"></i></a>
+</div>
+
 <div class="row">
 <div class="col-xs-12 record-wrapper">
 <div id="k181" class="record"><h1 class="ri">TEXT 1</h1></div>
@@ -143,6 +183,7 @@
 </div>
 <a href="https://editor.vedabase.com/en/bg/1-K180/">« Previous</a>
 <a href="https://editor.vedabase.com/en/bg/1/2/">Next »</a>
+</div>
 </div>
 </div>
 </div>
@@ -225,4 +266,26 @@
 
 }());
 </script>
+
+<!-- paragraph tool js -->
+<script>
+$(function() {
+    $('.record').on('click', function(e) {
+        var $this = $(this);
+        if ($this.hasClass('selected')) {
+          $this.removeClass('selected');
+          if ( $('.record.selected').length == 0 ) {
+            $('#para-menu-btn').hide();
+          }
+        } else {
+          $this.addClass('selected');
+          $("#para-menu-btn").show();
+        }
+        $('.record.selected').each(function( index ) {
+            selectedIds.push($( this ).attr('id'));
+        });
+    });
+});
+</script>
+<!-- paragraph tool js end -->
 </body></html>
