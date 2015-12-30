@@ -6,12 +6,43 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
 <link href="https://editor.vedabase.com/static/css/style.css" rel="stylesheet">
 <link href="css/popups.css" rel="stylesheet">
+<link type="text/css" rel="stylesheet" href="css/jquery.mmenu.all.css" />
+<style type="text/css">
+  #site-navigation-menu, #site-settings-menu {
+    background-color: #ffdfaf;
+    border-color: #ffcd84;
+  }
+</style>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script type="text/javascript" src="./js/popups.js"></script>
+<script src="js/jquery.mmenu.min.all.js"></script>
+
+<script type="text/javascript">
+  $(function() {
+      $('nav#site-settings-menu').mmenu({
+          "offCanvas": {
+            "position": "right",
+            "zposition": "front"
+          },
+          "navbar": {
+            "title": ""
+          }
+      });
+      $('nav#site-navigation-menu').mmenu({
+          "offCanvas": {
+            "zposition": "front"
+          },
+          "navbar": {
+            "title": ""
+          }
+      });
+   });
+</script>
 </head>
 <body unresolved="" touch-action="auto">
+<div>
 <header id="header" class="header header--fixed hide-from-print slide slide--reset headroom--top" role="banner">
-<div class="navbar navbar-tools navbar-inverse navbar-static-top" role="navigation" style="z-index:9999;">
+<div class="navbar navbar-tools navbar-inverse navbar-static-top hidden-xs" role="navigation" style="z-index:9999;">
 <div class="container">
 <div class="navbar-collapse collapse ccc">
 <ul class="nav navbar-nav navbar-right">
@@ -45,17 +76,15 @@
 <div class="navbar navbar-main-menu navbar-default navbar-static-top" role="navigation">
 <div class="container">
 <div class="navbar-header">
-<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-tools .navbar-collapse">
-<span class="sr-only">Toggle navigation</span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
+<button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target=".navbar-tools .navbar-collapse">
+  <a href="#site-navigation-menu">
+    <i class="fa fa-bars"></i>
+  </a>
 </button>
 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-menu .navbar-collapse">
-<span class="sr-only">Toggle navigation</span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
-<span class="icon-bar"></span>
+  <a href="#site-settings-menu">
+    <i class="fa fa-cogs"></i>
+  </a>
 </button>
 <a class="navbar-brand" href="https://editor.vedabase.com/en/">Bhaktivedanta Vedabase</a>
 </div>
@@ -117,6 +146,62 @@
 </div>
 </div>
 </div>
+</div>
+<nav id="site-settings-menu">
+  <ul>
+    <li>
+      <a href="#">
+        <i class="fa fa-cog"></i> Settings
+      </a>
+      <ul>
+        <li><a href="https://editor.vedabase.com/en/bg/1/1/#">Testing 1</a></li>
+        <li><a href="https://editor.vedabase.com/en/bg/1/1/#">Testing 2</a></li>
+        <li><a href="https://editor.vedabase.com/en/bg/1/1/#">Testing 3</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="https://editor.vedabase.com/en/bg/1/1/#">
+        <i class="fa fa-globe"></i> English
+      </a>
+      <ul>
+        <li><a href="./TEXT 1 _ vedabase.com_files/TEXT 1 _ vedabase.com.html">English</a></li>
+        <li><a href="https://editor.vedabase.com/bn/bg/1/1/">বাংলা</a></li>
+        <li><a href="https://editor.vedabase.com/fr/bg/1/1/">Français</a></li>
+        <li><a href="https://editor.vedabase.com/gu/bg/1/1/">ગુજરાતી</a></li>
+        <li><a href="https://editor.vedabase.com/hi/bg/1/1/">हिन्दी</a></li>
+        <li><a href="https://editor.vedabase.com/ml/bg/1/1/">മലയാളം</a></li>
+        <li><a href="https://editor.vedabase.com/ta/bg/1/1/">தமிழ்</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="https://editor.vedabase.com/users/login/?next=/en/bg/1/1/">Login / Sign Up</a>
+    </li>
+  </ul>
+</nav>
+
+<nav id="site-navigation-menu">
+  <ul>
+    <li><a href="https://editor.vedabase.com/en/">Home</a></li>
+    <li class="active"><a href="https://editor.vedabase.com/en/bg/1/1/#about">Library</a></li>
+    <li><a href="https://editor.vedabase.com/en/bg/1/1/#contact">Search</a></li>
+    <li>
+      <a href="https://editor.vedabase.com/en/bg/1/1/#" class="dropdown-toggle" data-toggle="dropdown">Indexes</a>
+      <ul class="dropdown-menu" role="menu">
+        <li><a href="https://editor.vedabase.com/en/bg/1/1/#">Index of verses</a></li>
+        <li><a href="https://editor.vedabase.com/en/bg/1/1/#">Index of synonyms</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="https://editor.vedabase.com/en/bg/1/1/#" class="dropdown-toggle" data-toggle="dropdown"><i class=""></i> More</a>
+      <ul>
+        <li><a href="https://editor.vedabase.com/en/bg/1/1/#">About Project</a></li>
+        <li><a href="https://editor.vedabase.com/en/bg/1/1/#">Credits</a></li>
+        <li><a href="https://editor.vedabase.com/en/bg/1/1/#">Support Us</a></li>
+        <li><a href="https://editor.vedabase.com/en/bg/1/1/#">Contact</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.7.0/headroom.min.js"></script>
 <script>
 (function() {
