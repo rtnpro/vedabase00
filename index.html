@@ -13,6 +13,14 @@
     border-color: #ffcd84;
   }
 
+  #para-menu {
+    background-color: #FFF1C1;
+  }
+
+  #para-menu.section {
+    border-color: #ffcd84;
+  }
+
   #para-menu-btn {
     position: fixed;
     top: 50px;
@@ -21,13 +29,21 @@
     display: none;
   }
 
+  #para-menu hr {
+    border-top-color: #ffcd84;
+    margin: 0px;
+  }
+
+  #para-menu h2,h3 {
+    text-transform: uppercase;
+  }
+
   .record.selected {
     text-decoration: underline;
   }
 
-  #para-menu {
-    margin-top: 100px;
-    margin-bottom: 100px;
+  .block {
+    display: block;
   }
 </style>
 
@@ -39,23 +55,23 @@
       $('nav#site-settings-menu').mmenu({
           "offCanvas": {
             "position": "right",
-            "zposition": "front"
           },
           "navbar": {
             "title": ""
           }
       });
       $('nav#site-navigation-menu').mmenu({
-          "offCanvas": {
-            "zposition": "front"
-          },
           "navbar": {
             "title": ""
           }
       });
       $('nav#para-menu').mmenu({
           "offCanvas": {
-            "zposition": "front"
+            "zposition": "front",
+            "position": "right"
+          },
+          "navbar": {
+            "title": ""
           }
       });
    });
@@ -151,14 +167,82 @@
 <div class="main-content-container">
 <nav id="para-menu">
   <ul>
-      <div class="row">
-        <button class="btn col-md-6 col-sm-6 col-xs-6">
-          <i class="fa fa-bookmark"></i> Remove from Bookmarks
-        </button>
-        <button class="btn col col-md-6 col-sm-6 col-xs-6">
-          <i class="fa fa-share"></i> Share this
-        </button>
-      </div>
+    <li>
+      <span class="row">
+        <span class="col col-sm-6 col-xs-12 col-md-6">
+          <button class="btn btn-default btn-xs btn-block">
+            <i class="fa fa-bookmark"></i> Remove from Bookmarks
+          </button>
+        </span>
+        <span class="col col-sm-6 col-xs-12 col-md-6">
+          <button class="btn btn-default btn-xs btn-block">
+            <i class="fa fa-share"></i> Share this
+          </button>
+        </span>
+      </span>
+      <span class="row">
+        <span class="col col-sm-6 col-xs-12 col-md-6">
+          <button class="btn btn-default btn-xs btn-block">
+            <i class="fa fa-pencil"></i> Add note
+          </button>
+        </span>
+        <span class="col col-sm-6 col-xs-12 col-md-6">
+          <button class="btn btn-default btn-xs btn-block">
+            <i class="fa fa-link"></i> Permanent link
+          </button>
+        </span>
+      </span>
+    </li>
+    <li>
+      <span class="row">
+        <h3>categorization:</h3>
+        <span>
+          <span class="block">Leadership <i class="fa fa-angle-double-right"></i> Quality of the leader</span>
+          <span class="block">
+            Psychology <i class="fa fa-angle-double-right"></i> Mind
+            <i class="fa fa-angle-double-right"></i> Qualities
+          </span>
+        </span>
+        <span class="row">
+          <button class="btn btn-default pull-right">
+            <i class="fa fa-plus-square"></i>
+            Suggest category
+          </button>
+        </span>
+      </span>
+    </li>
+    <li>
+      <span class="row">
+        <h3>My folders:</h3>
+        <span>
+          <span class="block">
+            ILS 2014 <i class="fa fa-angle-double-right"></i> Vedabase Presentation
+          </span>
+          <span class="block">
+            My Notes <i class="fa fa-angle-double-right"></i> Paper on education
+          </span>
+        </span>
+        <span class="row">
+          <button class="btn btn-default pull-right">
+            <i class="fa fa-plus-square"></i>
+            Save in my folder
+          </button>
+        </span>
+      </span>
+    </li>
+    <li>
+      <span class="row">
+        <h3>Info:</h3>
+        <span>
+          <span class="block">
+            <strong>Author:</strong> A. C. Bhaktivedanta Swami Prabhupada
+          </span>
+          <span class="block">
+            My Notes <i class="fa fa-angle-double-right"></i> Paper on education
+          </span>
+        </span>
+      </span>
+    </li>
   </ul>
 </nav>
 <div class="container main-content">
