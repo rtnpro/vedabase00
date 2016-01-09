@@ -246,84 +246,110 @@
   </ul>
 </nav>
 <nav id="para-menu">
-  <ul>
-    <li>
-      <span class="row">
-        <span class="col col-sm-6 col-xs-12 col-md-6">
-          <button class="btn btn-default btn-xs btn-block">
-            <i class="fa fa-bookmark"></i> Remove from Bookmarks
-          </button>
-        </span>
-        <span class="col col-sm-6 col-xs-12 col-md-6">
-          <button class="btn btn-default btn-xs btn-block">
-            <i class="fa fa-share"></i> Share this
-          </button>
-        </span>
-      </span>
-      <span class="row">
-        <span class="col col-sm-6 col-xs-12 col-md-6">
-          <button class="btn btn-default btn-xs btn-block">
-            <i class="fa fa-pencil"></i> Add note
-          </button>
-        </span>
-        <span class="col col-sm-6 col-xs-12 col-md-6">
-          <button class="btn btn-default btn-xs btn-block">
-            <i class="fa fa-link"></i> Permanent link
-          </button>
-        </span>
-      </span>
-    </li>
-    <li>
-      <span class="row">
-        <h3>categorization:</h3>
-        <span>
-          <span class="block">Leadership <i class="fa fa-angle-double-right"></i> Quality of the leader</span>
-          <span class="block">
-            Psychology <i class="fa fa-angle-double-right"></i> Mind
-            <i class="fa fa-angle-double-right"></i> Qualities
+  <div id="para-menu-index">
+    <ul>
+      <li>
+        <span class="row">
+          <span class="col col-sm-6 col-xs-12 col-md-6">
+            <a class="btn btn-default btn-xs btn-block" href="#para-menu-bookmark-panel">
+              <i class="fa fa-bookmark"></i> Remove from Bookmarks
+            </a>
+          </span>
+          <span class="col col-sm-6 col-xs-12 col-md-6">
+            <a class="btn btn-default btn-xs btn-block" href="#para-menu-share-panel">
+              <i class="fa fa-share"></i> Share this
+            </a>
           </span>
         </span>
         <span class="row">
-          <button class="btn btn-default pull-right">
-            <i class="fa fa-plus-square"></i>
-            Suggest category
-          </button>
-        </span>
-      </span>
-    </li>
-    <li>
-      <span class="row">
-        <h3>My folders:</h3>
-        <span>
-          <span class="block">
-            ILS 2014 <i class="fa fa-angle-double-right"></i> Vedabase Presentation
+          <span class="col col-sm-6 col-xs-12 col-md-6">
+            <a class="btn btn-default btn-xs btn-block" href="#para-menu-add-note-panel">
+              <i class="fa fa-pencil"></i> Add note
+            </a>
           </span>
-          <span class="block">
-            My Notes <i class="fa fa-angle-double-right"></i> Paper on education
+          <span class="col col-sm-6 col-xs-12 col-md-6">
+            <a class="btn btn-default btn-xs btn-block">
+              <i class="fa fa-link"></i> Permanent link
+            </a>
           </span>
         </span>
+      </li>
+      <li>
         <span class="row">
-          <button class="btn btn-default pull-right">
-            <i class="fa fa-plus-square"></i>
-            Save in my folder
-          </button>
-        </span>
-      </span>
-    </li>
-    <li>
-      <span class="row">
-        <h3>Info:</h3>
-        <span>
-          <span class="block">
-            <strong>Author:</strong> A. C. Bhaktivedanta Swami Prabhupada
+          <h3>categorization:</h3>
+          <span>
+            <span class="block">Leadership <i class="fa fa-angle-double-right"></i> Quality of the leader</span>
+            <span class="block">
+              Psychology <i class="fa fa-angle-double-right"></i> Mind
+              <i class="fa fa-angle-double-right"></i> Qualities
+            </span>
           </span>
-          <span class="block">
-            My Notes <i class="fa fa-angle-double-right"></i> Paper on education
+          <span class="row">
+            <a class="btn btn-default pull-right" href="#para-menu-suggest-category-panel">
+              <i class="fa fa-plus-square"></i>
+              Suggest category
+            </a>
           </span>
         </span>
-      </span>
-    </li>
-  </ul>
+      </li>
+      <li>
+        <span class="row">
+          <h3>My folders:</h3>
+          <span>
+            <span class="block">
+              ILS 2014 <i class="fa fa-angle-double-right"></i> Vedabase Presentation
+            </span>
+            <span class="block">
+              My Notes <i class="fa fa-angle-double-right"></i> Paper on education
+            </span>
+          </span>
+          <span class="row">
+            <a class="btn btn-default pull-right" href="#para-menu-save-in-my-folder-panel">
+              <i class="fa fa-plus-square"></i>
+              Save in my folder
+            </a>
+          </span>
+        </span>
+      </li>
+      <li>
+        <span class="row">
+          <h3>Info:</h3>
+          <span>
+            <span class="block">
+              <strong>Author:</strong> A. C. Bhaktivedanta Swami Prabhupada
+            </span>
+            <span class="block">
+              My Notes <i class="fa fa-angle-double-right"></i> Paper on education
+            </span>
+          </span>
+        </span>
+      </li>
+    </ul>
+
+    <!-- Subpanels -->
+    <div id="para-menu-bookmark-panel" class="Panel">
+      <h1>Bookmark menu</h1>
+    </div>
+
+    <div id="para-menu-share-panel" class="Panel">
+      <h1>Share panel</h1>
+    </div>
+
+    <div id="para-menu-add-note-panel" class="Panel">
+      <h1>Add note panel</h1>
+    </div>
+
+    <div id="para-menu-suggest-category-panel" class="Panel">
+      <h1>Suggest category panel</h1>
+    </div>
+
+    <div id="para-menu-save-in-my-folder-panel" class="Panel">
+      <h1>Save in my folder panel</h1>
+    </div>
+
+    <!-- End subpanels -->
+
+  </div>
 </nav>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.7.0/headroom.min.js"></script>
 <script>
